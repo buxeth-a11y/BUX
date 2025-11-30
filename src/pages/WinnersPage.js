@@ -10,7 +10,7 @@ function WinnersPage() {
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [showUSD, setShowUSD] = useState(false);
+  const [showUSD, setShowUSD] = useState(true);
   const perPage = 10;
 
   const filteredWinners = React.useMemo(() => {
@@ -201,7 +201,7 @@ function WinnersPage() {
                     <td className="px-4 py-2 capitalize">{winner.type}</td>
                     <td className="px-4 py-2 text-sm">{formatTimestamp(winner.timestamp)}</td>
                     <td className="px-4 py-2">{shortenWallet(winner.wallet)}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-2 text-buxYellow cursor-pointer hover:underline" onClick={() => setShowUSD(!showUSD)}>
                       {showUSD
                         ? `$${(winner.ethAmount * ethPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                         : `${winner.ethAmount.toFixed(4)} ETH`

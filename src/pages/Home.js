@@ -88,7 +88,7 @@ const Home = () => {
   };
 
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-pb-24">
+    <div className="snap-y snap-proximity h-screen overflow-y-scroll">
       {/* 1. Hero / Buy Now Section */}
       <section className={`${sectionClass} bg-buxDollarGreen`}>
         {/* Logo - Smaller */}
@@ -102,29 +102,29 @@ const Home = () => {
           BUX
         </h1>
         
-        <p className="text-black font-pixel text-center mb-6 max-w-md text-sm relative h-6">
+        <p className="text-black font-pixel text-center mb-6 max-w-md text-sm">
           Win every{' '}
-          <span 
-            className="text-buxYellow inline-block transition-all duration-500"
-            style={{
-              ...labelStyle,
-              opacity: showHour ? 1 : 0,
-              transform: showHour ? 'translateY(0)' : 'translateY(-10px)',
-              position: showHour ? 'relative' : 'absolute',
-            }}
-          >
-            HOUR
-          </span>
-          <span 
-            className="text-buxYellow inline-block transition-all duration-500"
-            style={{
-              ...labelStyle,
-              opacity: showHour ? 0 : 1,
-              transform: showHour ? 'translateY(10px)' : 'translateY(0)',
-              position: showHour ? 'absolute' : 'relative',
-            }}
-          >
-            DAY
+          <span className="relative inline-block w-16">
+            <span
+              className="text-buxYellow absolute left-0 transition-all duration-500"
+              style={{
+                ...labelStyle,
+                opacity: showHour ? 1 : 0,
+                transform: showHour ? 'translateY(0)' : 'translateY(-10px)',
+              }}
+            >
+              HOUR
+            </span>
+            <span
+              className="text-buxYellow absolute left-0 transition-all duration-500"
+              style={{
+                ...labelStyle,
+                opacity: showHour ? 0 : 1,
+                transform: showHour ? 'translateY(10px)' : 'translateY(0)',
+              }}
+            >
+              DAY
+            </span>
           </span>
         </p>
         
