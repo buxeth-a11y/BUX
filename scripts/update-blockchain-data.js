@@ -7,6 +7,7 @@ const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
 const LOTTO_ADDRESS = '0x804E5bFe72Eeb3037D0A6dFa08F58d7786A6FdbF';
 const DEPLOYMENT_BLOCK = 7439089;
 const BATCH_SIZE = 10; // Alchemy free tier limit
+const BLOCKS_TO_QUERY = 30; // ~6 minutes of blocks at 12 sec/block
 
 const LOTTO_ABI = [
   'function hourlyPotWei() view returns (uint256)',
@@ -24,11 +25,22 @@ async function queryEventsInBatches(contract, eventName, fromBlock, toBlock) {
 
   while (currentFrom <= toBlock) {
     const currentTo = Math.min(currentFrom + BATCH_SIZE - 1, toBlock);
-    try {
-      const batch = await contract.queryFilter(eventName, currentFrom, currentTo);
-      events.push(...batch);
-    } catch (err) {
-      console.log(`Batch ${currentFrom}-${currentTo} failed, skipping...`);
+    let retries = 3;
+
+    while (retries > 0) {
+      try {
+        const batch = await contract.queryFilter(eventName, currentFrom, currentTo);
+        events.push(...batch);
+        break; // Success, exit retry loop
+      } catch (err) {
+        retries--;
+        if (retries > 0) {
+          console.log(`Batch ${currentFrom}-${currentTo} failed, retrying... (${retries} left)`);
+          await new Promise(r => setTimeout(r, 1000)); // Wait 1 second before retry
+        } else {
+          console.log(`Batch ${currentFrom}-${currentTo} failed after all retries, skipping`);
+        }
+      }
     }
     currentFrom = currentTo + 1;
   }
@@ -91,24 +103,14 @@ async function main() {
   // Get current block
   const currentBlock = await provider.getBlockNumber();
 
-  // Find the highest block we've already indexed
-  const lastBlock = existingWinners.reduce(
-    (max, w) => Math.max(max, w.blockNumber || 0),
-    DEPLOYMENT_BLOCK
-  );
-  const fromBlock = lastBlock > DEPLOYMENT_BLOCK ? lastBlock + 1 : DEPLOYMENT_BLOCK;
+  // Always query the last BLOCKS_TO_QUERY blocks (simple, reliable)
+  const fromBlock = Math.max(currentBlock - BLOCKS_TO_QUERY, DEPLOYMENT_BLOCK);
 
-  // Only query recent blocks to avoid too many API calls
-  // On first run, start from recent blocks only (last 1000 blocks)
-  const effectiveFromBlock = existingWinners.length === 0
-    ? Math.max(currentBlock - 1000, DEPLOYMENT_BLOCK)
-    : fromBlock;
-
-  console.log(`Querying events from block ${effectiveFromBlock} to ${currentBlock}...`);
+  console.log(`Querying events from block ${fromBlock} to ${currentBlock}...`);
 
   const [hourlyEvents, dailyEvents] = await Promise.all([
-    queryEventsInBatches(contract, 'HourlyWinnerPaid', effectiveFromBlock, currentBlock),
-    queryEventsInBatches(contract, 'DailyWinnerPaid', effectiveFromBlock, currentBlock),
+    queryEventsInBatches(contract, 'HourlyWinnerPaid', fromBlock, currentBlock),
+    queryEventsInBatches(contract, 'DailyWinnerPaid', fromBlock, currentBlock),
   ]);
 
   console.log(`Found ${hourlyEvents.length} hourly and ${dailyEvents.length} daily events`);
@@ -119,23 +121,25 @@ async function main() {
     const block = await provider.getBlock(event.blockNumber);
     const isHourly = event.fragment.name === 'HourlyWinnerPaid';
     newWinners.push({
+      id: Number(event.args.roundId),
       type: isHourly ? 'hourly' : 'daily',
-      roundId: Number(event.args.roundId),
-      winner: event.args.winner,
-      prizeEth: parseFloat(ethers.formatEther(event.args.prizeWei)),
-      note: event.args.note,
+      wallet: event.args.winner,
+      ethAmount: parseFloat(ethers.formatEther(event.args.prizeWei)),
       txHash: event.transactionHash,
       blockNumber: event.blockNumber,
-      timestamp: block.timestamp,
+      timestamp: block.timestamp * 1000, // Convert to milliseconds for JavaScript Date
     });
   }
 
-  // Merge and sort by timestamp (newest first)
-  const allWinners = [...existingWinners, ...newWinners]
+  // Merge, deduplicate by txHash, and sort by timestamp (newest first)
+  const existingTxHashes = new Set(existingWinners.map(w => w.txHash));
+  const uniqueNewWinners = newWinners.filter(w => !existingTxHashes.has(w.txHash));
+
+  const allWinners = [...existingWinners, ...uniqueNewWinners]
     .sort((a, b) => b.timestamp - a.timestamp);
 
   fs.writeFileSync(winnersPath, JSON.stringify(allWinners, null, 2));
-  console.log(`Wrote winners.json: ${allWinners.length} total winners (${newWinners.length} new)`);
+  console.log(`Wrote winners.json: ${allWinners.length} total winners (${uniqueNewWinners.length} new)`);
 
   console.log('Data update complete!');
 }
