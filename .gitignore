@@ -1,1 +1,14 @@
-node_modules
+# Dependencies
+node_modules/
+worker/node_modules/
+
+# Build output
+build/
+
+# Cloudflare Worker
+.wrangler/
+.dev.vars
+
+# Misc
+.DS_Store
+*.log

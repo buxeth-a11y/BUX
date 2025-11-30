@@ -1,0 +1,24 @@
+name = "bux-data-worker"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# KV Namespace binding - replace <YOUR_KV_NAMESPACE_ID> after running:
+# wrangler kv:namespace create "BUX_KV"
+[[kv_namespaces]]
+binding = "BUX_KV"
+id = "f04ab8650fe44bb7a2adb22fd2c7d0c0"
+
+# Cron trigger - every minute (Cloudflare minimum)
+# Worker self-triggers at 30 seconds for effective 30-second updates
+[triggers]
+crons = ["* * * * *"]
+
+# Environment variables (non-secret)
+[vars]
+CONTRACT_ADDRESS = "0x804E5bFe72Eeb3037D0A6dFa08F58d7786A6FdbF"
+DEPLOYMENT_BLOCK = "7439089"
+BATCH_SIZE = "10"
+BLOCKS_TO_QUERY = "30"
+
+# Note: Add ALCHEMY_API_KEY as a secret via:
+# wrangler secret put ALCHEMY_API_KEY

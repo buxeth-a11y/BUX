@@ -9,15 +9,15 @@ export const APP_CONFIG = {
 };
 
 export const DATA_CONFIG = {
-  // Static JSON files (auto-updated by GitHub Actions)
-  POTS_URL: '/data/pots.json',
-  WINNERS_URL: '/data/winners.json',
+  // Cloudflare Worker API endpoints (updates every 30 seconds)
+  POTS_URL: 'https://bux-data-worker.buxeth.workers.dev/api/pots',
+  WINNERS_URL: 'https://bux-data-worker.buxeth.workers.dev/api/winners',
 
   // CoinGecko API for ETH price (public, no key needed)
   COINGECKO_URL: 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd',
 
   // How often to check for new data (ms)
-  REFRESH_INTERVAL: 60000,  // 60 seconds
+  REFRESH_INTERVAL: 30000,  // 30 seconds (matches Worker update frequency)
 
   // Countdown tick interval (ms)
   COUNTDOWN_INTERVAL: 1000, // 1 second
