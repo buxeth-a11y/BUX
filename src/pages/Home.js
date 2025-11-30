@@ -88,9 +88,9 @@ const Home = () => {
   };
 
   return (
-    <div className="snap-y snap-proximity h-screen overflow-y-scroll">
+    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* 1. Hero / Buy Now Section */}
-      <section className={`${sectionClass} bg-buxDollarGreen`}>
+      <section className={`${sectionClass} bg-buxDollarGreen pb-24`}>
         {/* Logo - Smaller */}
         <img 
           src="/gifs/buxMobile.gif" 
@@ -102,11 +102,11 @@ const Home = () => {
           BUX
         </h1>
         
-        <p className="text-black font-pixel text-center mb-6 max-w-md text-sm">
+        <p className="text-black font-pixel text-center mb-6 max-w-md text-sm flex items-center justify-center">
           Win every{' '}
-          <span className="relative inline-block w-16">
+          <span className="relative inline-flex items-center justify-center" style={{ width: '3.5em', height: '1.2em' }}>
             <span
-              className="text-buxYellow absolute left-0 transition-all duration-500"
+              className="text-buxYellow absolute transition-all duration-500"
               style={{
                 ...labelStyle,
                 opacity: showHour ? 1 : 0,
@@ -116,7 +116,7 @@ const Home = () => {
               HOUR
             </span>
             <span
-              className="text-buxYellow absolute left-0 transition-all duration-500"
+              className="text-buxYellow absolute transition-all duration-500"
               style={{
                 ...labelStyle,
                 opacity: showHour ? 0 : 1,

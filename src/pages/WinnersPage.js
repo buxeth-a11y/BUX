@@ -183,8 +183,8 @@ function WinnersPage() {
                 <th className="px-4 py-2 text-left">Type</th>
                 <th className="px-4 py-2 text-left">Timestamp (UTC / Local)</th>
                 <th className="px-4 py-2 text-left">Wallet</th>
-                <th 
-                  className="px-4 py-2 text-left cursor-pointer hover:text-buxYellow transition-colors select-none"
+                <th
+                  className="px-4 py-2 text-left cursor-pointer text-buxYellow hover:underline transition-colors select-none"
                   onClick={() => setShowUSD(!showUSD)}
                   title="Click to toggle ETH/USD"
                 >
@@ -201,7 +201,7 @@ function WinnersPage() {
                     <td className="px-4 py-2 capitalize">{winner.type}</td>
                     <td className="px-4 py-2 text-sm">{formatTimestamp(winner.timestamp)}</td>
                     <td className="px-4 py-2">{shortenWallet(winner.wallet)}</td>
-                    <td className="px-4 py-2 text-buxYellow cursor-pointer hover:underline" onClick={() => setShowUSD(!showUSD)}>
+                    <td className="px-4 py-2">
                       {showUSD
                         ? `$${(winner.ethAmount * ethPrice).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                         : `${winner.ethAmount.toFixed(4)} ETH`
