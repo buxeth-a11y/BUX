@@ -1,0 +1,24 @@
+@import "@fontsource/press-start-2p";
+@import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /*borders*/
+    --pixel-border: 2px solid black;
+    --pixel-bg: #f8f9fa;
+    --pixel-accent: #ff4081;
+  }
+  body {
+    font-family: "Press Start 2P", system-ui, sans-serif;
+    background-color: var(--pixel-bg);
+    color: #000;
+  }
+}
+/* pixelated style (dont use this its garbage) */
+.pixelated {
+  image-rendering: pixelated;
+}

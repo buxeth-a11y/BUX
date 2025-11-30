@@ -1,0 +1,276 @@
+/* DO NOT CHANGE ANYTHING IN THIS FILE, YOU WILL FUCK UP THE SCALING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background: #FFFFFF;
+}
+
+/* container - ONLY FOR DESKTOP COMPONENT */
+.bux-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #fff;
+  width: 100vw;
+  height: 100vh;
+}
+
+.design-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: top left;
+  transform: scaleX(var(--scale-x)) scaleY(var(--scale-y));
+  will-change: transform;
+}
+
+/* element positions */
+.bg { position: absolute; width: 1920px; height: 1080px; left: 0; top: 0; }
+.buynow { position: absolute; width: 516px; height: 84px; left: 42px; top: 852px; }
+.bux { position: absolute; width: 546px; height: 714px; left: 577px; top: 204px; }
+.onehundredbux { position: absolute; width: 846px; height: 65px; left: 1050px; top: 855px; }
+.aboutbux { position: absolute; width: 560px; height: 100px; left: 1330px; top: 845px; }
+.aboutbux:hover {transform: scale(1.05);transition: transform 0.2s ease;content: url("/public/gifs/about-bux-fast.gif");}
+.socials { position: absolute; width: 300px; height: 78px; left: 1548px; top: 738px; border: none; background: none; }
+.win { position: absolute; width: 720px; height: 120px; left: 1146px; top: 250px; }
+.externalAudit { position: absolute; width: 282px; height: 282px; left: 102px; top: 342px; }
+.buxlottery { position: absolute; width: 504px; height: 36px; left: 66px; top: 240px; }
+.dailyPot { position: absolute; width: 360px; height: 100px; left: 0; top: 114px; }
+.daily.text-xl.font-bold {position: absolute;top: -392px;right: 370px;font-size:1.6rem;color:#faf4dd;text-shadow:5px 4px 4px black;}
+.dailyPot .nextDraw {left: 16px;top:12px;position:absolute;}
+.hourlyPot { position: absolute; width: 500px; height: 100px; left: 1100px; top: 114px; }
+.hourly.text-xl.font-bold {position: absolute;top: -392px;left: 550px;font-size: 1.6rem;color:#faf4dd;text-shadow:5px 4px 4px black;}
+.hourlyPot .nextDraw {margin-bottom:-50px;margin-left:30px;margin-top:10px;width:350px;}
+.marquee-container {display:none;}
+.bg-buxDollarGreen .dailyBox, .bg-buxDollarGreen .hourlyBox {margin: -6px 0 0;display:inline-flex;}
+.bg-buxDollarGreen .dailyBox .nextDraw, .bg-buxDollarGreen .hourlyBox .nextDraw {max-width: 240px !important;height: auto !important;}
+.bg-buxDollarGreen .dailyBox .dailyPot {height:80px;}
+.bg-buxDollarGreen .daily.text-xl.font-bold, .bg-buxDollarGreen .hourly.text-xl.font-bold {position:relative;text-shadow:none;top:0;right:0;}
+.bg-buxDollarGreen .daily.text-xl.font-bold {right:120px;top:-112px;font-size:1.1em;text-shadow:3px 3px 6px black;}
+.bg-buxDollarGreen .hourly.text-xl.font-bold {left:400px;top:-154px;font-size:1.1em;text-shadow:3px 3px 6px black;}
+.bg-buxDollarGreen .dailyBox .dailyPot .nextDraw, .bg-buxDollarGreen .hourlyBox .hourlyPot .nextDraw {margin-bottom:-40px;}
+.bg-buxDollarGreen .hourlyBox {float:right;margin-top:0!important;}
+.bg-buxDollarGreen .hourlyBox .hourlyPot .nextDraw {margin-left:18px;margin-top:-4px;}
+.bg-buxDollarGreen .dailyBox .dailyPot, .bg-buxDollarGreen .dailyBox .dailyPot .nextDraw, .bg-buxDollarGreen .hourlyBox .hourlyPot  {position: relative!important;left: 0!important;top: 0!important;}
+.bg-buxDollarGreen .hourlyPot {width:486px;height:76px;}
+.dh {height: 110px;}
+.hlink {color:#facc13ff;}
+
+/* Winners Page */
+.bg-buxGreen.dh.winner .daily.text-xl.font-bold {right:255px;}
+.bg-buxGreen.dh.winner .hourly.text-xl.font-bold {left:492px;}
+.bg-buxGreen.dh.winner .aboutTotalRight {bottom: 506px;right: -30px;}
+.bg-buxGreen.dh.winner .hourlyPot {width: 500px;}
+.bg-buxGreen.dh.winner .dailyBox .nextDraw, .bg-buxGreen.dh.winner .hourlyBox .nextDraw {max-width:248px;}
+
+@media screen and (max-width:768px) {
+/* Home */
+	.bg-buxGreen.dh.text-white.home {height:200px;}
+  .bg-buxGreen.dh.text-white.home .hourly.text-xl.font-bold {left:280px;top:-144px;}  
+	.bg-buxGreen.dh.text-white.home .daily.text-xl.font-bold {right:-260px;top:-192px;display:inline-block;}	
+	.bg-buxGreen.dh.text-white.home .hourlyPot {left:0px!important;}
+  .bg-buxGreen.dh.text-white.home .hourlyBox {float:none;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft {bottom:340px;right:240px;margin-left:26px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight {bottom:576px;right:740px;}
+
+  /* About */
+  .bg-buxGreen.dh.text-white {height:200px;}  
+  .bg-buxGreen.dh.text-white .daily.text-xl.font-bold {right:-36px;top:-194px;display:block ruby;}
+  .bg-buxGreen.dh.text-white .hourly.text-xl.font-bold {left:10px;top:-154px;}
+  .bg-buxGreen.dh.text-white .hourlyBox {float:none;margin-left:-16px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft {bottom:429px;right:230px;}
+  .bg-buxGreen.dh.text-white .aboutTotalRight {bottom:510px;right:726px;}
+}
+
+
+/* Winners Mobile */
+@media screen and (max-width:639px) {
+
+.dh.winner {height:200px;}
+.bg-buxGreen.dh.winner .hourlyBox .hourlyPot .nextDraw {margin-left: 18px;margin-top: -84px;}
+.bg-buxGreen.dh.winner .hourlyPot {width: 260px;}
+.bg-buxGreen.dh.winner .hourly.text-xl.font-bold {left: 272px!important;top:-82px;}
+.bg-buxGreen.dh.winner .daily.text-xl.font-bold {right:26px!important;top:-42px;}
+.bg-buxGreen.dh.winner .aboutTotalLeft {bottom:268px;right:468px;}
+.bg-buxGreen.dh.winner .aboutTotalRight {bottom: 426px;right: 697px!important;}
+
+}
+
+/* About Mobile */
+@media screen and (max-width:639px) {
+
+.bg-buxGreen.dh.text-white {height:200px;}
+.bg-buxGreen.dh.text-white .hourlyBox .hourlyPot .nextDraw {
+	margin-left: 18px;
+	margin-top: -84px;
+}
+
+.bg-buxGreen.dh.text-white .hourlyPot {
+	width: 260px;
+}
+
+.bg-buxGreen.dh.text-white .daily.text-xl.font-bold {right:6px;top:-36px;}
+.bg-buxGreen.dh.text-white .hourly.text-xl.font-bold {left:260px;top:-78px;}
+
+.bg-buxGreen.dh.text-white .aboutTotalLeft {
+	bottom: 262px;
+	right: 468px;
+}
+
+.bg-buxGreen.dh.text-white .aboutTotalRight {
+	bottom: 418px;
+	right: 730px;
+}
+}
+
+@media screen and (max-width:500px) {
+   /* Home */
+  .bg-buxGreen.dh.text-white.home {height:350px;} 
+  .bg-buxGreen.dh.text-white.home .dailyBox {position: relative;right: 0;left:60px;} 
+  .bg-buxGreen.dh.text-white.home .hourlyBox {position: relative;top: 170px;right: -50px;} 
+  .bg-buxGreen.dh.text-white.home .hourly.text-xl.font-bold {left:100px;top:14px;}  
+  .bg-buxGreen.dh.text-white.home .daily.text-xl.font-bold {right: 0;top: -110px;left: 80px;display: inline-flex;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight {bottom: 338px;right: 950px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft {bottom: 352px;right: 452px;}  
+
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .d5Right {left:1204px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .d4Right {left:1174px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .d3Right {left:1144px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .d2Right {left:1114px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .d1Right {left:1084px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .d0Right {left:1054px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalRight .dollarRight {left:1020px;top:152px;}
+
+  /* About */
+  .bg-buxGreen.dh.text-white {height:350px;} 
+  .bg-buxGreen.dh.text-white .dailyBox {position: relative;right: 0;left:60px;} 
+  .bg-buxGreen.dh.text-white .hourlyBox {position: relative;top: 160px;right: -60px;} 
+  .bg-buxGreen.dh.text-white .hourlyPot {width:270px;}
+  .bg-buxGreen.dh.text-white .hourly.text-xl.font-bold {left:-10px;top:-4px;}
+  .bg-buxGreen.dh.text-white .daily.text-xl.font-bold {right: 0;top: -117px;left: -13px;display: block ruby;}
+  .bg-buxGreen.dh.text-white .aboutTotalRight {bottom: 354px;right: 930px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft {bottom: 366px;right: 425px;}  
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .dollarLeft {left:496px;top:194px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .d0Left {top:166px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .d1Left {top:140px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .d2Left {top:113px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .d3Left {top:87px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .d4Left {top:61px;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft .d5Left {top:35px;}
+
+  /* Winner */
+  .bg-buxGreen.dh.winner {height:350px;} 
+  .bg-buxGreen.dh.winner .dailyBox {position: relative;right: 0;left:60px;} 
+  .bg-buxGreen.dh.winner .hourlyBox {position: relative;top: 160px;right: -60px;} 
+  .bg-buxGreen.dh.winner .hourly.text-xl.font-bold {left:-19px!important;top:2px;}
+  .bg-buxGreen.dh.winner .daily.text-xl.font-bold {right: 0;top: -116px;left: -20px;display: inline-flex;}
+  .bg-buxGreen.dh.winner .aboutTotalRight {bottom: 348px;right: 920px!important;}
+  .bg-buxGreen.dh.winner .aboutTotalLeft {bottom: 362px;right: 413px;}    
+
+}
+
+@media screen and (max-width:485px) {
+  /* Home */
+  .bg-buxGreen.dh.text-white.home  {height:380px;}
+  .bg-buxGreen.dh.text-white.home .hourlyBox {right:74px;}
+  .bg-buxGreen.dh.text-white.home .daily.text-xl.font-bold {top:-116px;left:52px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .dollarLeft {left:484px;top:158px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft {bottom:322px;right:442px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .d0Left {left:516px;top:132px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .d1Left {left:546px;top:106px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .d2Left {left:574px;top:80px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .d3Left {left:602px;top:54px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .d4Left {left:632px;top:28px;}
+  .bg-buxGreen.dh.text-white.home .aboutTotalLeft .d5Left {left:662px;top:2px;}
+  .bg-buxGreen.dh.text-white .hourlyBox .hourlyPot .nextDraw {margin-top:-84px;}
+  .bg-buxGreen.dh.text-white.home .hourlyPot {left:20px;}
+
+  /* About */
+  .bg-buxGreen.dh.text-white {height:350px;}
+  .bg-buxGreen.dh.text-white .hourlyBox {position:relative;float:none;left:26px;top:160px;margin-left:-7px;}
+  .bg-buxGreen.dh.text-white .dailyBox {position:relative;left:38px;}
+  .bg-buxGreen.dh.text-white .hourly.text-xl.font-bold {left:-20px;top:16px;text-shadow:3px 1px 1px black;font-size:1.4em;}
+  .bg-buxGreen.dh.text-white .daily.text-xl.font-bold {position:relative;left:-17px;top:-114px;text-shadow:3px 1px 1px black;font-size:1.4em;}
+  .bg-buxGreen.dh.text-white .aboutTotalLeft {right:446px;bottom:362px;}
+  .bg-buxGreen.dh.text-white .aboutTotalRight {bottom:340px;right:955px;}
+
+  /* Winners */
+  .bg-buxGreen.dh.winner .dailyBox {position:relative;left:50px;}
+  .bg-buxGreen.dh.winner .daily.text-xl.font-bold {left:-5px;top:-110px;text-shadow:3px 1px 1px black;font-size:1.4em;}
+  .bg-buxGreen.dh.winner .aboutTotalLeft {right:424px;bottom:335px;}  
+  .bg-buxGreen.dh.winner .hourlyBox {position:relative;float:none;left:26px;top:170px;}
+  .bg-buxGreen.dh.winner .hourly.text-xl.font-bold {left:-14px!important;top:18px;text-shadow:3px 1px 1px black;font-size:1.4em;}  
+  .bg-buxGreen.dh.winner .aboutTotalRight {bottom:330px;right:950px!important;}
+
+}
+
+
+/* left digits */
+.dollarLeft { position: absolute; width: 30px; height: 48px; left: 364px; top: 165px; }
+.d0Left { position: absolute; width: 36px; height: 36px; left: 400px; top: 172px; }
+.d1Left { position: absolute; width: 36px; height: 36px; left: 440px; top: 172px; }
+.d2Left { position: absolute; width: 36px; height: 36px; left: 476px; top: 172px; }
+.d3Left { position: absolute; width: 36px; height: 36px; left: 516px; top: 172px; }
+.d4Left { position: absolute; width: 36px; height: 36px; left: 556px; top: 172px; }
+.d5Left { position: absolute; width: 36px; height: 36px; left: 596px; top: 172px; }
+.d6Left { display:none; /*position: absolute; width: 36px; height: 36px; left: 596px; top: 170px;*/ }
+
+/* right digits */
+.dollarRight { position: absolute; width: 30px; height: 48px; left: 1610px; top: 169px; }
+.d0Right { position: absolute; width: 36px; height: 36px; left: 1648px; top: 175px; }
+.d1Right { position: absolute; width: 36px; height: 36px; left: 1686px; top: 175px; }
+.d2Right { position: absolute; width: 36px; height: 36px; left: 1722px; top: 175px; }
+.d3Right { position: absolute; width: 36px; height: 36px; left: 1760px; top: 175px; }
+.d4Right { position: absolute; width: 36px; height: 36px; left: 1800px; top: 175px; }
+.d5Right { position: absolute; width: 36px; height: 36px; left: 1840px; top: 175px; }
+.d6Right { display:none;/*position: absolute; width: 36px; height: 36px; left: 1840px; top: 175px;*/ }
+
+/* About Page Left Digits */
+.aboutTotalLeft .d5Left {position: relative; left: 678px;top: 19px;}
+.aboutTotalLeft .d4Left {position: relative;left: 648px;top: 45px;}
+.aboutTotalLeft .d3Left {position: relative;left: 618px;top: 71px;}
+.aboutTotalLeft .d2Left {position: relative;left: 588px;top: 97px;}
+.aboutTotalLeft .d1Left {position: relative;left: 558px;top: 123px;}
+.aboutTotalLeft .d0Left {position: relative;left: 528px;top: 149px;}
+.aboutTotalLeft .dollarLeft {position: relative;left: 496px;top: 174px;}
+.aboutTotalLeft img {width: 26px;height: 26px;filter:drop-shadow(0px 0px 1rem #000);}
+.aboutTotalLeft {position: relative;bottom: 349px;right: 240px;}
+
+/* About Page Right Digits */
+.aboutTotalRight .d5Right {position: relative;left: 1178px;top: -4px;}
+.aboutTotalRight .d4Right {position: relative;left: 1148px;top: 22px;}
+.aboutTotalRight .d3Right {position: relative;left: 1118px;top: 48px;}
+.aboutTotalRight .d2Right {position: relative;left: 1090px;top: 74px;}
+.aboutTotalRight .d1Right {position: relative;left: 1062px;top: 100px;}
+.aboutTotalRight .d0Right {position: relative;left: 1034px;top: 126px;}
+.aboutTotalRight .dollarRight {position: relative;left: 1003px;top: 152px;}
+.aboutTotalRight img {width: 26px;height: 26px;filter:drop-shadow(0px 0px 1rem #000);}
+.aboutTotalRight {position: relative;bottom: 510px;right: 240px;}
+
+/* hover effects */
+.hover-effect { 
+  transition: opacity 0.3s ease; 
+  cursor: pointer;
+}
+.hover-effect:hover { 
+  opacity: 0.8; 
+}
+.hover-zoom {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  transform-origin: center;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
