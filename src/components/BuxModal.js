@@ -2,7 +2,7 @@ import React from 'react';
 
 const buxItems = [
   { name: 'Winners', icon: 'trophy-solid', link: '/winners' },
-  { name: 'Audit', icon: 'badge-check-solid', link: '/audit' },
+  { name: 'Audit', icon: 'badge-check-solid', link: '/BUX Smart Contract Audit - Final Report.pdf' },
   { name: 'About', icon: 'question-solid', link: '/about' },
 ];
 

@@ -44,7 +44,7 @@ export default function Navbar() {
             />
           </div>
           <span className="text-buxYellow font-pixel text-xs drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            BuxLotto
+            BUX
           </span>
         </div>
 
