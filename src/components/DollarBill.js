@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import SocialsModal from './SocialsModal';
 import BuxModal from './BuxModal';
-import DVDModal from './DVDModal'; // Add this import
+import DVDModal from './DVDModal';
+import { useBux } from '../contexts/BuxContext';
 
 const getDigit = (number, position) => Math.floor((number / 10 ** position) % 10);
 
@@ -19,9 +20,14 @@ export const NumberDisplay = ({ number, position, className }) => (
 export default function DollarBill() {
   const [isSocialsModalOpen, setIsSocialsModalOpen] = useState(false);
   const [isBuxModalOpen, setIsBuxModalOpen] = useState(false);
-  const [isDVDModalOpen, setIsDVDModalOpen] = useState(true); 
-  const [dailyPot, setDailyPot] = useState(0);
-  const [hourlyPot, setHourlyPot] = useState(0);
+  const [isDVDModalOpen, setIsDVDModalOpen] = useState(true);
+
+  // Get live pot data from blockchain (via static JSON files)
+  const { dailyPot: dailyPotEth, hourlyPot: hourlyPotEth, ethPrice } = useBux();
+
+  // Convert ETH to USD for display
+  const dailyPot = Math.round(dailyPotEth * ethPrice);
+  const hourlyPot = Math.round(hourlyPotEth * ethPrice);
   
   // hover state for gifs
   const [hoveredGifs, setHoveredGifs] = useState({
@@ -61,15 +67,6 @@ export default function DollarBill() {
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
-  }, []);
-
-  // counter update 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDailyPot((prev) => (prev >= 10000000 ? 0 : prev + 500));
-      setHourlyPot((prev) => (prev >= 10000000 ? 0 : prev + 250));
-    }, 1000);
-    return () => clearInterval(interval);
   }, []);
 
   const showKLeft = dailyPot > 1000;
