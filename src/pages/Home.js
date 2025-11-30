@@ -104,7 +104,7 @@ const Home = () => {
         
         <p className="text-black font-pixel text-center mb-6 max-w-md text-sm flex items-center justify-center">
           Win every{' '}
-          <span className="relative inline-flex items-center justify-center ml-1" style={{ width: '3.5em', height: '1.2em' }}>
+          <span className="relative inline-flex items-center justify-center ml-4" style={{ width: '3.5em', height: '1.2em' }}>
             <span
               className="text-buxYellow absolute transition-all duration-500"
               style={{
