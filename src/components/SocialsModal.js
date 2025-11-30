@@ -1,9 +1,8 @@
 import React from 'react';
 
 const navItems = [
-  { name: 'Twitter', icon: 'x', link: 'https://twitter.com/buxlotto' },
-  { name: 'Discord', icon: 'discord', link: 'https://discord.gg/buxlotto' },
-  { name: 'Telegram', icon: 'envelope-solid', link: 'https://t.me/buxlotto' },
+  { name: 'Twitter', icon: 'x', link: 'https://x.com/BUXonETH' },
+  { name: 'Telegram', icon: 'envelope-solid', link: 'https://t.me/buxeth' },
   { name: 'Dexscreener', icon: 'analytics-solid', link: 'https://dexscreener.com/' },
 ];
 

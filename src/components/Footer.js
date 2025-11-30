@@ -68,25 +68,17 @@ const Footer = () => {
               Connect
             </h3>
             <div className="space-y-2">
-              <a 
-                href="https://twitter.com/buxlotto" 
-                target="_blank" 
+              <a
+                href="https://x.com/BUXonETH"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-white font-pixel text-sm hover:text-buxYellow transition-colors block"
               >
                 → Twitter
               </a>
-              <a 
-                href="https://discord.gg/buxlotto" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white font-pixel text-sm hover:text-buxYellow transition-colors block"
-              >
-                → Discord
-              </a>
-              <a 
-                href="https://t.me/buxlotto" 
-                target="_blank" 
+              <a
+                href="https://t.me/buxeth"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-white font-pixel text-sm hover:text-buxYellow transition-colors block"
               >
