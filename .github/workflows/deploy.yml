@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # Run every minute (30s after update-data via sleep step)
+    - cron: '* * * * *'
   workflow_dispatch:
 
 permissions:
@@ -18,6 +21,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for data update to complete
+        if: github.event_name == 'schedule'
+        run: sleep 30
+
       - name: Checkout
         uses: actions/checkout@v4
 
