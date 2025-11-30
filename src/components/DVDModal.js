@@ -1,55 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useBux } from '../contexts/BuxContext';
+
+// Format seconds into countdown string
+const formatCountdown = (totalSeconds, includeHours = false) => {
+  if (totalSeconds <= 0) {
+    return includeHours ? '00:00:00' : '00:00';
+  }
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (includeHours) {
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+};
 
 export default function DVDModal({ isOpen, onClose }) {
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const [velocity, setVelocity] = useState({ x: 1.5, y: 1.5 });
   const [color, setColor] = useState('#85BB65');
-  const [dailyCountdown, setDailyCountdown] = useState('');
-  const [hourlyCountdown, setHourlyCountdown] = useState('');
   const containerRef = useRef(null);
   const animationFrameRef = useRef(null);
   const logoWidth = 400;
   const logoHeight = 200;
 
-  const colors = ['#85BB65', '#faf4dd']; 
+  const colors = ['#85BB65', '#faf4dd'];
 
+  // Get countdown times from blockchain data
+  const { dailySeconds, hourlySeconds } = useBux();
 
-  
-  useEffect(() => {
-    const updateCountdowns = () => {
-      const now = new Date();
-      const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
-      
-      // midnight utc
-      const nextMidnight = new Date(utcNow);
-      nextMidnight.setUTCHours(24, 0, 0, 0);
-      const dailyDiff = nextMidnight - utcNow;
-      
-      const dailyHours = Math.floor(dailyDiff / (1000 * 60 * 60));
-      const dailyMinutes = Math.floor((dailyDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const dailySeconds = Math.floor((dailyDiff % (1000 * 60)) / 1000);
-      
-      // time until next hr
-      const nextHour = new Date(utcNow);
-      nextHour.setUTCMinutes(60, 0, 0);
-      const hourlyDiff = nextHour - utcNow;
-      
-      const hourlyMinutes = Math.floor((hourlyDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const hourlySeconds = Math.floor((hourlyDiff % (1000 * 60)) / 1000);
-      
-      setDailyCountdown(
-        `${String(dailyHours).padStart(2, '0')}:${String(dailyMinutes).padStart(2, '0')}:${String(dailySeconds).padStart(2, '0')}`
-      );
-      setHourlyCountdown(
-        `${String(hourlyMinutes).padStart(2, '0')}:${String(hourlySeconds).padStart(2, '0')}`
-      );
-
-    };
-
-    updateCountdowns();
-    const interval = setInterval(updateCountdowns, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const dailyCountdown = formatCountdown(dailySeconds, true);
+  const hourlyCountdown = formatCountdown(hourlySeconds, false);
 
   // bounce animation synced to refresh rate
   useEffect(() => {
