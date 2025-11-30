@@ -1,7 +1,7 @@
 {
-  "hourlyPotEth": 0.001373215515505884,
+  "hourlyPotEth": 0,
   "dailyPotEth": 0.000958386620793746,
-  "nextHourlyTimestamp": 1764522008,
-  "nextDailyTimestamp": 1764547208,
-  "updatedAt": "2025-11-30T16:59:44.215Z"
+  "nextHourlyTimestamp": 1764525600,
+  "nextDailyTimestamp": 1764547200,
+  "updatedAt": "2025-11-30T17:02:24.843Z"
 }
