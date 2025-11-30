@@ -1,33 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Pots from "../components/Pots";
-import Countdown from "../components/Countdown";
+import PotDisplay from "../components/PotDisplay";
 import { useBux } from '../contexts/BuxContext';
 
-const getDigit = (number, position) =>
-  Math.floor((number / 10 ** position) % 10);
-
-// dollar amount display
-export const NumberDisplay = ({ number, position, className }) => (
-  <img
-    src={`/bill-parts/numbersBold/${getDigit(number, position)}.png`}
-    alt={getDigit(number, position)}
-    className={className}
-  />
-);
-
 function WinnersPage() {
-  // Get live data from blockchain (via static JSON files)
-  const {
-    dailyPot: dailyPotEth,
-    hourlyPot: hourlyPotEth,
-    ethPrice,
-    winners,
-    winnersLoading
-  } = useBux();
-
-  // Convert ETH to USD for display
-  const dailyPot = Math.round(dailyPotEth * ethPrice);
-  const hourlyPot = Math.round(hourlyPotEth * ethPrice);
+  const { winners, winnersLoading, ethPrice } = useBux();
 
   const [filterType, setFilterType] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
@@ -36,9 +12,6 @@ function WinnersPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showUSD, setShowUSD] = useState(false);
   const perPage = 10;
-
-  const showKLeft = dailyPot > 1000;
-  const showKRight = hourlyPot > 1000;  
 
   const filteredWinners = React.useMemo(() => {
     return winners
@@ -136,64 +109,8 @@ function WinnersPage() {
           Winners
         </h1>        
 
-        <div className="bg-buxGreen dh winner text-white p-6 mb-2 rounded shadow-pixel space-y-6">
-          {/* POTS DISPLAY */}
-          <Pots />
-
-          {/* COUNTDOWN UNDER POTS */}
-          <div className="flex flex-col items-center gap-2 mb-10">
-            <Countdown />
-          </div>
-
-          {/* BILL DISPLAY SECTION */}
-          <div>
-            <div className="aboutTotalLeft">
-              {/* amounts left (daily) */}
-              <img
-                src="/bill-parts/numbersBold/dollar_sign.png"
-                alt="$"
-                className="dollarLeft"
-              />
-              <NumberDisplay number={dailyPot} position={4} className="d0Left" />              
-              <NumberDisplay number={dailyPot} position={4} className="d1Left" />
-              <NumberDisplay number={dailyPot} position={3} className="d2Left" />
-              <NumberDisplay number={dailyPot} position={2} className="d3Left" />
-              <NumberDisplay number={dailyPot} position={1} className="d4Left" />
-              <NumberDisplay number={dailyPot} position={0} className="d5Left" />
-
-              {showKLeft && (
-                <img
-                  src="/bill-parts/numbersBold/k.png"
-                  alt="k"
-                  className="d6Left"
-                />
-              )}
-              </div>
-
-            <div className="aboutTotalRight">              
-              {/* amounts right (hourly) */}
-              <img
-                src="/bill-parts/numbersBold/dollar_sign.png"
-                alt="$"
-                className="dollarRight"
-              />
-              <NumberDisplay number={hourlyPot} position={4} className="d0Right" />              
-              <NumberDisplay number={hourlyPot} position={4} className="d1Right" />
-              <NumberDisplay number={hourlyPot} position={3} className="d2Right" />
-              <NumberDisplay number={hourlyPot} position={2} className="d3Right" />
-              <NumberDisplay number={hourlyPot} position={1} className="d4Right" />
-              <NumberDisplay number={hourlyPot} position={0} className="d5Right" />
-
-              {showKRight && (
-                <img
-                  src="/bill-parts/numbersBold/k.png"
-                  alt="k"
-                  className="d6Right"
-                />
-              )}
-
-            </div>
-          </div>
+        <div className="mb-6">
+          <PotDisplay />
         </div>
 
         <div className="flex flex-col lg:flex-row justify-between items-center mb-6 space-y-4 lg:space-y-0 lg:space-x-4">
