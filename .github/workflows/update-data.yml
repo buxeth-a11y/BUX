@@ -2,9 +2,8 @@ name: Update Blockchain Data
 
 on:
   schedule:
-    # Run every minute
-    - cron: '* * * * *'
-  workflow_dispatch: # Allow manual trigger
+    - cron: '*/1 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write

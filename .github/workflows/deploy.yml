@@ -4,8 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    # Run every minute (30s after update-data via sleep step)
-    - cron: '* * * * *'
+    - cron: '*/1 * * * *'
   workflow_dispatch:
 
 permissions:
