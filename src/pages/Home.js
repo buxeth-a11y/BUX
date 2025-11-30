@@ -90,7 +90,7 @@ const Home = () => {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* 1. Hero / Buy Now Section */}
-      <section className={`${sectionClass} bg-buxDollarGreen pb-24`}>
+      <section className={`${sectionClass} bg-buxDollarGreen pb-48`}>
         {/* Logo - Smaller */}
         <img 
           src="/gifs/buxMobile.gif" 
@@ -104,7 +104,7 @@ const Home = () => {
         
         <p className="text-black font-pixel text-center mb-6 max-w-md text-sm flex items-center justify-center">
           Win every{' '}
-          <span className="relative inline-flex items-center justify-center" style={{ width: '3.5em', height: '1.2em' }}>
+          <span className="relative inline-flex items-center justify-center ml-1" style={{ width: '3.5em', height: '1.2em' }}>
             <span
               className="text-buxYellow absolute transition-all duration-500"
               style={{
