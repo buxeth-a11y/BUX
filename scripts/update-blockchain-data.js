@@ -4,8 +4,8 @@ const path = require('path');
 
 // Configuration (from GitHub Secrets)
 const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
-const LOTTO_ADDRESS = '0x804E5bFe72Eeb3037D0A6dFa08F58d7786A6FdbF';
-const DEPLOYMENT_BLOCK = 7439089;
+const LOTTO_ADDRESS = '0x6B003aB42C53e4340223f286D8263E20F3565A67';
+const DEPLOYMENT_BLOCK = 21920808;
 const BATCH_SIZE = 10; // Alchemy free tier limit
 const BLOCKS_TO_QUERY = 30; // ~6 minutes of blocks at 12 sec/block
 
@@ -54,7 +54,7 @@ async function main() {
   }
 
   const provider = new ethers.JsonRpcProvider(
-    `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`
+    `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`
   );
   const contract = new ethers.Contract(LOTTO_ADDRESS, LOTTO_ABI, provider);
 

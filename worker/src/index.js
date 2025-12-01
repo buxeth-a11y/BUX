@@ -110,9 +110,9 @@ export default {
  * Main update function - fetches blockchain data and stores in KV
  */
 async function updateBlockchainData(env) {
-  const ALCHEMY_URL = `https://eth-sepolia.g.alchemy.com/v2/${env.ALCHEMY_API_KEY}`;
-  const CONTRACT_ADDRESS = env.CONTRACT_ADDRESS || '0x804E5bFe72Eeb3037D0A6dFa08F58d7786A6FdbF';
-  const DEPLOYMENT_BLOCK = parseInt(env.DEPLOYMENT_BLOCK || '7439089');
+  const ALCHEMY_URL = `https://eth-mainnet.g.alchemy.com/v2/${env.ALCHEMY_API_KEY}`;
+  const CONTRACT_ADDRESS = env.CONTRACT_ADDRESS || '0x6B003aB42C53e4340223f286D8263E20F3565A67';
+  const DEPLOYMENT_BLOCK = parseInt(env.DEPLOYMENT_BLOCK || '21920808');
   const BATCH_SIZE = parseInt(env.BATCH_SIZE || '10');
   const BLOCKS_TO_QUERY = parseInt(env.BLOCKS_TO_QUERY || '30');
 

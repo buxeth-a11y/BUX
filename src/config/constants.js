@@ -1,8 +1,8 @@
 // BUX Configuration
 
 export const APP_CONFIG = {
-  // Contract address (Sepolia)
-  CONTRACT_ADDRESS: '0x804E5bFe72Eeb3037D0A6dFa08F58d7786A6FdbF',
+  // Contract address (Mainnet)
+  CONTRACT_ADDRESS: '0x6B003aB42C53e4340223f286D8263E20F3565A67',
 
   // Responsive breakpoint (how wide screen has to be to go down to mobile version)
   DESKTOP_BREAKPOINT: 1024,
