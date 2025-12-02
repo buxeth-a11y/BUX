@@ -72,7 +72,7 @@ function WinnersPage() {
   };
 
   const txLink = (tx) => {
-    return `https://sepolia.etherscan.io/tx/${tx}`;
+    return `https://etherscan.io/tx/${tx}`;
   };
 
   const labelStyle = {
