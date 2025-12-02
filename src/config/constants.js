@@ -2,7 +2,7 @@
 
 export const APP_CONFIG = {
   // Contract address (Mainnet)
-  CONTRACT_ADDRESS: '0x6B003aB42C53e4340223f286D8263E20F3565A67',
+  CONTRACT_ADDRESS: '0xEE94957C2821B122F9e0c69805A5BA05132d1990',
 
   // Responsive breakpoint (how wide screen has to be to go down to mobile version)
   DESKTOP_BREAKPOINT: 1024,
