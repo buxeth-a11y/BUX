@@ -194,9 +194,9 @@ const Home = () => {
         <p className="text-black font-pixel text-center mb-8 max-w-md">
           Verified & secure smart contracts
         </p>
-        <a 
-          href="https://audit-link.com" 
-          target="_blank" 
+        <a
+          href="https://bux.life/BUX%20Smart%20Contract%20Audit%20-%20Final%20Report.pdf"
+          target="_blank"
           rel="noopener noreferrer"
           className={linkClass}
         >

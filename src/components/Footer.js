@@ -95,9 +95,9 @@ const Footer = () => {
               © 2025 BUX Token. All rights reserved.
             </p>
             <div className="flex items-center space-x-4">
-              <a 
-                href="https://etherscan.io/address/0x..." 
-                target="_blank" 
+              <a
+                href="https://bux.life/BUX%20Smart%20Contract%20Audit%20-%20Final%20Report.pdf"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-buxYellow font-pixel text-sm hover:underline"
               >

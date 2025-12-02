@@ -5,9 +5,8 @@ const navItems = [
   { name: 'Home', path: '/', icon: 'home-solid' },
   { name: 'Winners', path: '/winners', icon: 'trophy-solid' },
   { name: 'About', path: '/about', icon: 'question-solid' },
-  { name: 'Twitter', path: 'https://twitter.com/buxlotto', icon: 'x', external: true },
-  { name: 'Discord', path: 'https://discord.gg/buxlotto', icon: 'discord', external: true },
-  { name: 'Telegram', path: 'https://t.me/buxlotto', icon: 'envelope-solid', external: true },
+  { name: 'Twitter', path: 'https://x.com/BUXonETH', icon: 'x', external: true },
+  { name: 'Telegram', path: 'https://t.me/buxeth', icon: 'envelope-solid', external: true },
 ];
 
 export default function Navbar() {
