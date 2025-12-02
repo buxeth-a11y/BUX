@@ -227,7 +227,7 @@ const Home = () => {
             <i className="hn hn-envelope-solid mr-2"></i> Telegram
           </a>
           <a
-            href="https://dexscreener.com/"
+            href="https://dexscreener.com/ethereum/0x26b73e77f7b2cfc05d28a8978b917eced1cdf7915862292cfbb507731d5120fd"
             target="_blank"
             rel="noopener noreferrer"
             className={linkClass}

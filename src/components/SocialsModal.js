@@ -3,7 +3,7 @@ import React from 'react';
 const navItems = [
   { name: 'Twitter', icon: 'x', link: 'https://x.com/BUXonETH' },
   { name: 'Telegram', icon: 'envelope-solid', link: 'https://t.me/buxeth' },
-  { name: 'Dexscreener', icon: 'analytics-solid', link: 'https://dexscreener.com/' },
+  { name: 'Dexscreener', icon: 'analytics-solid', link: 'https://dexscreener.com/ethereum/0x26b73e77f7b2cfc05d28a8978b917eced1cdf7915862292cfbb507731d5120fd' },
 ];
 
 export default function SocialsModal({ isOpen, onClose }) {
