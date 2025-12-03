@@ -110,7 +110,7 @@ export default function ContractAddress({ variant = 'default' }) {
     );
   }
 
-  // Dollar bill themed banner - vintage/tan colors, fixed position
+  // Dollar bill themed banner - vintage/tan colors, fixed position with flash
   if (variant === 'dollar-bill') {
     return (
       <button
@@ -124,17 +124,15 @@ export default function ContractAddress({ variant = 'default' }) {
           text-xs
           py-2
           hover:opacity-80
-          transition-all
           cursor-pointer
           text-center
           border-b-2
           z-50
+          ca-flash-animation
         "
         style={{
           backgroundColor: '#d4c9a8',
-          color: '#2d4a3e',
-          borderColor: '#2d4a3e',
-          textShadow: '1px 1px 0 rgba(255,255,255,0.3)'
+          borderColor: '#2d4a3e'
         }}
         title="Click to copy contract address"
       >
