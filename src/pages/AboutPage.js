@@ -144,7 +144,9 @@ function AboutPage() {
               Home
             </a>
             <a
-              href="/buy"
+              href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0xb6cbffeab1434a0d73f1706c1389378325febb96"
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative bg-buxYellow text-buxBlack font-pixel px-8 py-4 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all text-sm"
             >
               Buy BUX
