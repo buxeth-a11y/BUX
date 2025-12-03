@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ContractAddress from './ContractAddress';
 
 const navItems = [
   { name: 'Home', path: '/', icon: 'home-solid' },
@@ -46,6 +47,9 @@ export default function Navbar() {
             BUX
           </span>
         </div>
+
+        {/* Contract Address */}
+        <ContractAddress variant="compact" />
 
         {/* burgir */}
         <button
