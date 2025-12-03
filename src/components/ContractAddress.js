@@ -110,13 +110,16 @@ export default function ContractAddress({ variant = 'default' }) {
     );
   }
 
-  // Dollar bill themed banner - vintage/tan colors
+  // Dollar bill themed banner - vintage/tan colors, fixed position
   if (variant === 'dollar-bill') {
     return (
       <button
         onClick={handleCopy}
         className="
-          w-full
+          fixed
+          top-0
+          left-0
+          right-0
           font-pixel
           text-xs
           py-2
@@ -125,6 +128,7 @@ export default function ContractAddress({ variant = 'default' }) {
           cursor-pointer
           text-center
           border-b-2
+          z-50
         "
         style={{
           backgroundColor: '#d4c9a8',
