@@ -15,7 +15,7 @@ function DesktopLayout({ children }) {
   if (isHomePage) {
     return (
       <>
-        <ContractAddress variant="desktop-banner" />
+        <ContractAddress variant="dollar-bill" />
         <DollarBill />
       </>
     );
