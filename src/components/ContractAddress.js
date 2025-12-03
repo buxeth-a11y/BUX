@@ -18,7 +18,7 @@ export default function ContractAddress({ variant = 'default' }) {
   // Truncated version
   const truncatedAddress = `${CONTRACT_ADDRESS.slice(0, 6)}...${CONTRACT_ADDRESS.slice(-3)}`;
 
-  // Compact version for Navbar - no border, just yellow text
+  // Compact version for Navbar mobile - no border, just yellow text, truncated
   if (variant === 'compact') {
     return (
       <button
@@ -31,6 +31,7 @@ export default function ContractAddress({ variant = 'default' }) {
           hover:opacity-80
           transition-all
           cursor-pointer
+          sm:hidden
         "
         style={{
           textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
@@ -40,16 +41,13 @@ export default function ContractAddress({ variant = 'default' }) {
         {copied ? (
           <span className="text-buxYellow">Copied!</span>
         ) : (
-          <>
-            <span className="hidden sm:inline">CA: {CONTRACT_ADDRESS}</span>
-            <span className="sm:hidden">CA: {truncatedAddress}</span>
-          </>
+          <span>CA:{truncatedAddress}</span>
         )}
       </button>
     );
   }
 
-  // Banner version for mobile - full width, thin, full address
+  // Banner version - full width, thin, truncated on mobile
   if (variant === 'banner') {
     return (
       <button
@@ -73,7 +71,40 @@ export default function ContractAddress({ variant = 'default' }) {
         {copied ? (
           <span className="text-buxYellow">Copied!</span>
         ) : (
-          <span>CA: {CONTRACT_ADDRESS}</span>
+          <span>CA:{truncatedAddress}</span>
+        )}
+      </button>
+    );
+  }
+
+  // Desktop banner version - full address
+  if (variant === 'desktop-banner') {
+    return (
+      <button
+        onClick={handleCopy}
+        className="
+          w-full
+          bg-buxGreen
+          text-buxYellow
+          font-pixel
+          text-xs
+          py-2
+          hover:opacity-90
+          transition-all
+          cursor-pointer
+          text-center
+          border-b-2
+          border-black
+        "
+        style={{
+          textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+        }}
+        title="Click to copy contract address"
+      >
+        {copied ? (
+          <span className="text-buxYellow">Copied!</span>
+        ) : (
+          <span>CA:{CONTRACT_ADDRESS}</span>
         )}
       </button>
     );
@@ -100,7 +131,7 @@ export default function ContractAddress({ variant = 'default' }) {
       {copied ? (
         <span className="text-buxYellow">Copied!</span>
       ) : (
-        <span>CA: {CONTRACT_ADDRESS}</span>
+        <span>CA:{CONTRACT_ADDRESS}</span>
       )}
     </button>
   );

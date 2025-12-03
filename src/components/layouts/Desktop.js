@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import DollarBill from '../DollarBill';
 import ScrollingBanner from '../ScrollingBanner';
+import ContractAddress from '../ContractAddress';
 import { APP_CONFIG } from '../../config/constants';
 import Footer from '../Footer';
 
@@ -12,12 +13,18 @@ function DesktopLayout({ children }) {
 
  
   if (isHomePage) {
-    return <DollarBill />;
+    return (
+      <>
+        <ContractAddress variant="desktop-banner" />
+        <DollarBill />
+      </>
+    );
   }
 
 
   return (
     <main className="flex flex-col min-h-screen">
+      <ContractAddress variant="desktop-banner" />
       {showBanner && (
         <ScrollingBanner
           dailyPot={APP_CONFIG.DAILY_POT}
