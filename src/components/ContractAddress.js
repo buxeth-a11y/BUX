@@ -15,76 +15,92 @@ export default function ContractAddress({ variant = 'default' }) {
     }
   };
 
-  // Truncated version for mobile
+  // Truncated version
   const truncatedAddress = `${CONTRACT_ADDRESS.slice(0, 6)}...${CONTRACT_ADDRESS.slice(-3)}`;
 
+  // Compact version for Navbar - no border, just yellow text
   if (variant === 'compact') {
     return (
       <button
         onClick={handleCopy}
         className="
-          flex items-center gap-1
-          bg-buxBlack
           text-buxYellow
           font-pixel
           text-xs
           px-2 py-1
-          border-2 border-black
-          shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-          hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]
-          hover:translate-x-[1px]
-          hover:translate-y-[1px]
-          active:shadow-none
-          active:translate-x-[2px]
-          active:translate-y-[2px]
+          hover:opacity-80
           transition-all
           cursor-pointer
         "
+        style={{
+          textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+        }}
         title="Click to copy contract address"
       >
-        <span className="hidden sm:inline">CA: {CONTRACT_ADDRESS}</span>
-        <span className="sm:hidden">CA: {truncatedAddress}</span>
         {copied ? (
-          <i className="hn hn-check-solid text-buxGreen"></i>
+          <span className="text-buxYellow">Copied!</span>
         ) : (
-          <i className="hn hn-copy-solid"></i>
+          <>
+            <span className="hidden sm:inline">CA: {CONTRACT_ADDRESS}</span>
+            <span className="sm:hidden">CA: {truncatedAddress}</span>
+          </>
         )}
       </button>
     );
   }
 
+  // Banner version for mobile - full width, thin, full address
+  if (variant === 'banner') {
+    return (
+      <button
+        onClick={handleCopy}
+        className="
+          w-full
+          text-buxYellow
+          font-pixel
+          text-xs
+          py-2
+          hover:opacity-80
+          transition-all
+          cursor-pointer
+          text-center
+        "
+        style={{
+          textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+        }}
+        title="Click to copy contract address"
+      >
+        {copied ? (
+          <span className="text-buxYellow">Copied!</span>
+        ) : (
+          <span>CA: {CONTRACT_ADDRESS}</span>
+        )}
+      </button>
+    );
+  }
+
+  // Default version
   return (
     <button
       onClick={handleCopy}
       className="
-        flex items-center gap-2
-        bg-buxBlack
         text-buxYellow
         font-pixel
         text-sm
         px-4 py-2
-        border-4 border-black
-        shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-        hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-        hover:translate-x-[2px]
-        hover:translate-y-[2px]
-        active:shadow-none
-        active:translate-x-[4px]
-        active:translate-y-[4px]
+        hover:opacity-80
         transition-all
         cursor-pointer
       "
+      style={{
+        textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+      }}
       title="Click to copy contract address"
     >
-      <span className="hidden sm:inline">CA: {CONTRACT_ADDRESS}</span>
-      <span className="sm:hidden">CA: {truncatedAddress}</span>
       {copied ? (
-        <span className="text-buxGreen flex items-center gap-1">
-          <i className="hn hn-check-solid"></i>
-          Copied!
-        </span>
+        <span className="text-buxYellow">Copied!</span>
       ) : (
-        <i className="hn hn-copy-solid"></i>
+        <span>CA: {CONTRACT_ADDRESS}</span>
       )}
     </button>
   );

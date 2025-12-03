@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PotDisplay from "../components/PotDisplay";
+import ContractAddress from "../components/ContractAddress";
 
 const Home = () => {
   const [showHour, setShowHour] = React.useState(true);
@@ -91,10 +92,15 @@ const Home = () => {
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* 1. Hero / Buy Now Section */}
       <section className={`${sectionClass} bg-buxDollarGreen pb-48`}>
+        {/* Contract Address Banner - Mobile Only */}
+        <div className="sm:hidden w-full mb-4">
+          <ContractAddress variant="banner" />
+        </div>
+
         {/* Logo - Smaller */}
-        <img 
-          src="/gifs/buxMobile.gif" 
-          alt="BuxLotto" 
+        <img
+          src="/gifs/buxMobile.gif"
+          alt="BuxLotto"
           className="w-48 h-auto pixelated mb-4"
         />
 
