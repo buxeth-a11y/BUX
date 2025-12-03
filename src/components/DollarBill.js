@@ -175,7 +175,7 @@ export default function DollarBill() {
 
         {/* buy now */}
         <a 
-          href="https://app.uniswap.org/swap" 
+          href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0xb6cbffeab1434a0d73f1706c1389378325febb96" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="buynow hover-zoom"
