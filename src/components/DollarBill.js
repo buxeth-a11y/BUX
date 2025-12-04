@@ -189,11 +189,6 @@ export default function DollarBill() {
           />
         </a>
 
-        {/* v4 hook pools warning */}
-        <p className="buynow-warning">
-          ⚠️ Uniswap Trade Settings: Only Enable "v4 hook pools" to swap through our pool for best rates
-        </p>
-
         {/* about */}
         <a href="/about"><img 
           src={`/bill-parts/parts/about-bux.gif`} 
@@ -238,8 +233,13 @@ export default function DollarBill() {
         {/* modals */}
         <SocialsModal isOpen={isSocialsModalOpen} onClose={() => setIsSocialsModalOpen(false)} />
         <BuxModal isOpen={isBuxModalOpen} onClose={() => setIsBuxModalOpen(false)} />
-        <DVDModal isOpen={isDVDModalOpen} onClose={() => setIsDVDModalOpen(true)} /> 
+        <DVDModal isOpen={isDVDModalOpen} onClose={() => setIsDVDModalOpen(true)} />
       </div>
+
+      {/* v4 hook pools warning - positioned below the dollar bill */}
+      <p className="buynow-warning">
+        ⚠️ Uniswap Trade Settings: Only Enable "v4 hook pools" to swap through our pool for best rates
+      </p>
     </div>
   );
 }
