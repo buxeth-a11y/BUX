@@ -174,20 +174,25 @@ export default function DollarBill() {
         </button>
 
         {/* buy now */}
-        <a 
-          href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0xb6cbffeab1434a0d73f1706c1389378325febb96" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0xb6cbffeab1434a0d73f1706c1389378325febb96"
+          target="_blank"
+          rel="noopener noreferrer"
           className="buynow hover-zoom"
           onMouseEnter={() => setHoveredGifs(prev => ({ ...prev, buynow: true }))}
           onMouseLeave={() => setHoveredGifs(prev => ({ ...prev, buynow: false }))}
         >
-          <img 
-            src={hoveredGifs.buynow ? "/gifs/buynow-fast.gif" : `/gifs/buynow${gifSpeeds.buynow}.gif`} 
-            alt="Buy Now" 
-            className="w-full h-full " 
+          <img
+            src={hoveredGifs.buynow ? "/gifs/buynow-fast.gif" : `/gifs/buynow${gifSpeeds.buynow}.gif`}
+            alt="Buy Now"
+            className="w-full h-full "
           />
         </a>
+
+        {/* v4 hook pools warning */}
+        <p className="buynow-warning">
+          ⚠️ Uniswap Trade Settings: Only Enable "v4 hook pools" to swap through our pool for best rates
+        </p>
 
         {/* about */}
         <a href="/about"><img 

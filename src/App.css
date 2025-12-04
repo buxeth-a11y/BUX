@@ -35,6 +35,18 @@ html, body {
 /* element positions */
 .bg { position: absolute; width: 1920px; height: 1080px; left: 0; top: 0; }
 .buynow { position: absolute; width: 516px; height: 84px; left: 42px; top: 852px; }
+.buynow-warning {
+  position: absolute;
+  left: 42px;
+  top: 946px;
+  width: 516px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #2d4a3e;
+  text-align: center;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+  line-height: 1.4;
+}
 .bux { position: absolute; width: 546px; height: 714px; left: 577px; top: 204px; }
 .onehundredbux { position: absolute; width: 846px; height: 65px; left: 1050px; top: 855px; }
 .aboutbux { position: absolute; width: 560px; height: 100px; left: 1330px; top: 845px; }

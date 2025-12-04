@@ -189,6 +189,9 @@ const Home = () => {
         >
           Buy BUX
         </a>
+        <p className="text-buxYellow font-pixel text-xs text-center mt-6 max-w-xs px-2" style={labelStyle}>
+          ⚠️ Uniswap Trade Settings: Only Enable "v4 hook pools" to swap through our pool for best rates
+        </p>
       </section>
 
       {/* audit */}
